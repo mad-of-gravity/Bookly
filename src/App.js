@@ -1,5 +1,5 @@
 import "./App.css";
-
+import {Button} from './components/Button';
 
 function App() {
   return (
@@ -15,7 +15,11 @@ function App() {
           Edit the <code>./src</code> folder to add components.
           <p>Find what are you looking for</p>
           <img src="images/illustrations/meditating-woman.png" alt="woman"/>
+          
         </div>
+        <Button color="red" display="inline-block">
+            Skip
+          </Button>
       </div>
     </div>
   );
