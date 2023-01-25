@@ -2,6 +2,8 @@ import "./App.css";
 import {Button} from './components/Button';
 
 function App() {
+
+
   return (
     <div className="App">
       <section class="hero">
@@ -17,7 +19,7 @@ function App() {
           <img src="images/illustrations/meditating-woman.png" alt="woman"/>
           
         </div>
-        <Button color="red" display="inline-block">
+          <Button variant="contained" color="transparent" border="1px solid #FFFFFF" >
             Skip
           </Button>
       </div>
