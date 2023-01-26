@@ -4,11 +4,9 @@ const Button = ({
   variant = "contained",
   display = "inline-block",
   color = "primary",
-  margin="0",
   children,
   ...props
 }) => {
-
   const variants = {
     CONTAINED: "contained",
     TEXT: "text",
@@ -20,7 +18,6 @@ const Button = ({
         style={getContainedButtonStyle({
           color,
           display,
-          margin,
           ...props,
         })}
         onClick={props.onClick}
@@ -31,7 +28,10 @@ const Button = ({
       </button>
     ) : (
       <button
-        style={getTextButtonStyle({ display, ...props })}
+        style={getTextButtonStyle({
+          display,
+          ...props,
+        })}
         onClick={props.onClick}
         onMouseEnter={props.handleMouseEnter}
         onMouseLeave={props.handleMouseLeave}

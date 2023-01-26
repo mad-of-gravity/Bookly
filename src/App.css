@@ -3,13 +3,13 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #0f0f29;
+  box-sizing: border-box;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  height: 30%;
 }
 
 .left-ellipse {
@@ -27,10 +27,27 @@ body {
 }
 
 @media (max-width: 375px) {
+  .header {
+    height: 30%;
+  }
+
   .right-ellipse {
     min-width: 6rem;
     min-height: 6rem;
   }
+}
+
+@media (min-width: 376px) {
+  .header {
+    height: 20%;
+  }
+}
+
+.page-container {
+  width: 100%; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 #root {
