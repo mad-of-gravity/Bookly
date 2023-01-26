@@ -1,10 +1,16 @@
 import { createUseStyles } from "react-jss";
 import { useState } from "react";
-import Button from "../../ButtonComponent/Button";
 import Dot from "../../DotComponent/Dot";
 
 //The page styles used
 const useStyles = createUseStyles({
+  pageContainer: {
+    width: "100%", 
+    display: "flex", 
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
   img: {
     width: "11rem",
     height: "11rem",
@@ -49,13 +55,6 @@ const useStyles = createUseStyles({
     justifyContent: "center",
   },
 
-  skip: {
-    gap: "50px",
-  },
-
-  next: {
-    gap: "12px",
-  },
 });
 
 const OnBoarding = ({ pageElements }) => {
@@ -117,8 +116,6 @@ const OnBoarding = ({ pageElements }) => {
 
   //When the next button is clicked
   const handleNextClick = () => {
-    const numberOfDots = 3;
-
     if (dotIndex === 0) {
       setDotIndex(dotIndex + 1);
       handleFirstDotClick();
@@ -135,7 +132,7 @@ const OnBoarding = ({ pageElements }) => {
 
   const classes = useStyles();
   return (
-    <div className="page-container">
+    <div className={classes.pageContainer}>
       <img className={classes.img} src={imgSource} alt="Illustration" />
 
       {/*This container includes the title and text content of the page.*/}
@@ -164,28 +161,6 @@ const OnBoarding = ({ pageElements }) => {
           color={thirdDotColor}
           onClick={handleThirdDotClick}
         />
-      </div>
-
-      <div className={classes.controls}>
-        <Button
-          className={classes.skip}
-          variant="text"
-          width="140px"
-          height="56px"
-        >
-          {" "}
-          Skip{" "}
-        </Button>
-        <Button
-          className={classes.next}
-          variant="contained"
-          width="140px"
-          height="56px"
-          onClick={handleNextClick}
-        >
-          {" "}
-          Next{" "}
-        </Button>
       </div>
     </div>
   );

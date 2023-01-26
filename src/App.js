@@ -1,6 +1,6 @@
 import "./App.css";
-import Button from "./components/ButtonComponent/Button";
 import OnBoarding from "./components/Pages/OnBoardingPage/OnBoarding";
+import Welcome from "./components/Pages/WelcomePage/Wecome";
 
 const elements = [
   {
@@ -35,7 +35,9 @@ function App() {
           alt="header right ellipse"
         />
       </div>
+      <h1> Hi there</h1>
       <OnBoarding pageElements={elements} />
+      
     </>
   );
 }
