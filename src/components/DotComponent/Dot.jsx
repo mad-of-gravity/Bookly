@@ -9,7 +9,7 @@ const Dot = ({ diameter, color, ...props }) => {
         padding: props.padding ? props.padding : "0",
         width: diameter,
         height: diameter,
-        backgroundColor: color,
+        backgroundColor: color ? color : "#2E2E5D",
         border: "none",
         borderRadius: "50%",
         display: "inline-block",

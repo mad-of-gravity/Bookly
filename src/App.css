@@ -3,16 +3,41 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #0f0f29;
-  background-image: url('./images/background-elements/ellipse_16_stroke.png'), url('./images/background-elements/ellipse_17.png');
-  background-position: left top, right 80px;
-  background-repeat: no-repeat;
-  padding: 35px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 30%;
+}
+
+.left-ellipse {
+  margin-top: 0;
+  align-self: flex-start;
+  width: 12rem;
+  height: 8rem;
+}
+
+.right-ellipse {
+  min-width: 4rem;
+  min-height: 4rem;
+  margin-top: 30%;
+  align-self: flex-end;
+}
+
+@media (max-width: 375px) {
+  .right-ellipse {
+    min-width: 6rem;
+    min-height: 6rem;
+  }
 }
 
 #root {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
+  width: 100vw;
 }
 
