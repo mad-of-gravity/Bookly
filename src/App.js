@@ -1,5 +1,6 @@
 import "./App.css";
 import OnBoarding from "./components/Pages/OnBoardingPage/OnBoarding";
+import Personalization from "./components/Pages/PersonalizationPage/Personalization";
 import Welcome from "./components/Pages/WelcomePage/Wecome";
 
 const elements = [
@@ -35,7 +36,7 @@ function App() {
           alt="header right ellipse"
         />
       </div>
-      <Welcome/>
+      <Personalization />
       
       
     </>

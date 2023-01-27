@@ -2,9 +2,8 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
     badge: {
+        margin: "5px",
         boxSizing: "border-box",
-        display: "flex",
-        alignItems: "flex-start",
         borderRadius: "24px",
         border: "1px solid #FFFFFF",
         color: "#FFFFFF",

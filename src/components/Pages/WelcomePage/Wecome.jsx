@@ -90,9 +90,6 @@ const Welcome = () => {
         >
           Skip
         </Button>
-        <Badge>Art</Badge>
-        <Badge>Business</Badge>
-        <Badge>Technology</Badge>
       </div>
     </div>
   );
