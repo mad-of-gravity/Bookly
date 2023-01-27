@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+import Badge from "../../BadgeComponent/Badge";
 import Button from "../../ButtonComponent/Button";
 
 //The page styles used
@@ -89,6 +90,9 @@ const Welcome = () => {
         >
           Skip
         </Button>
+        <Badge>Art</Badge>
+        <Badge>Business</Badge>
+        <Badge>Technology</Badge>
       </div>
     </div>
   );

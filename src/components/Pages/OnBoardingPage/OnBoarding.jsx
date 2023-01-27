@@ -58,7 +58,7 @@ const useStyles = createUseStyles({
 });
 
 const OnBoarding = ({ pageElements }) => {
-  //#2E2E5D will be the initial color of the dots
+  //#2E2E5D will be the initial color of the dots except first one
   const [firstDotColor, setFirstDotColor] = useState("#4838D1");
   const [secondDotColor, setSecondDotColor] = useState("#2E2E5D");
   const [thirdDotColor, setThirdDotColor] = useState("#2E2E5D");
