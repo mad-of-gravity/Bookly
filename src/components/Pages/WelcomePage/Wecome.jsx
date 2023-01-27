@@ -31,13 +31,21 @@ const useStyles = createUseStyles({
   },
 
   paragraph: {
-    margin: "8px 0",
+    margin: "8px 0px",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "21px",
     color: "#BBB1FA",
     wordWrap: "break-word",
+  },
+
+  controls: {
+    display: "flex",
+    padding: "8px 0",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
 });
 
@@ -50,7 +58,38 @@ const Welcome = () => {
       <p className={classes.paragraph}>
         By personalize your account, we can help you to find what you like.
       </p>
-      <Button > Personalize your account</Button>
+      <div className={classes.controls}>
+        <Button
+          variant="contained"
+          style={{
+            margin: "6px 0",
+            gap: "12px",
+            width: "295px",
+            height: "56px",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "24px",
+          }}
+        >
+          Personalize Your Account
+        </Button>
+       
+        <Button
+          variant="transparent"
+          style={{
+            margin: "6px 0",
+            gap: "12px",
+            width: "295px",
+            height: "56px",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "24px",
+            border: "1px solid #FFFFFF",
+          }}
+        >
+          Skip
+        </Button>
+      </div>
     </div>
   );
 };

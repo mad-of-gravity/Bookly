@@ -1,25 +1,26 @@
 import { createUseStyles } from "react-jss";
 import { useState } from "react";
 import Dot from "../../DotComponent/Dot";
+import Button from "../../ButtonComponent/Button";
 
 //The page styles used
 const useStyles = createUseStyles({
   pageContainer: {
-    width: "100%", 
-    display: "flex", 
+    width: "80%",
+    display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
 
   img: {
-    width: "11rem",
-    height: "11rem",
+    width: "14rem",
+    height: "14rem",
   },
 
   "@media (max-width: 375px)": {
     img: {
-      width: "10rem",
-      height: "10rem",
+      width: "12rem",
+      height: "12rem",
     },
   },
 
@@ -54,7 +55,6 @@ const useStyles = createUseStyles({
     display: "flex",
     justifyContent: "center",
   },
-
 });
 
 const OnBoarding = ({ pageElements }) => {
@@ -161,6 +161,34 @@ const OnBoarding = ({ pageElements }) => {
           color={thirdDotColor}
           onClick={handleThirdDotClick}
         />
+      </div>
+      <div className={classes.controls}>
+        <Button
+          variant="transparent"
+          onClick={handleNextClick}
+          style={{
+            width: "140px",
+            height: "56px",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "24px",
+          }}
+        >
+          Skip
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleNextClick}
+          style={{
+            width: "140px",
+            height: "56px",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "24px",
+          }}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );

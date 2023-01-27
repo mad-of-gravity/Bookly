@@ -35,8 +35,8 @@ function App() {
           alt="header right ellipse"
         />
       </div>
-      <h1> Hi there</h1>
-      <OnBoarding pageElements={elements} />
+      <Welcome/>
+      
       
     </>
   );
