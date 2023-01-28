@@ -105,21 +105,57 @@ const useStyles = createUseStyles({
   },
 });
 
+const initialTopics = [
+  { id: 0, name: "Art", color: "transparent" },
+  { id: 1, name: "Business", color: "transparent" },
+  { id: 2, name: "Comedy", color: "transparent" },
+  { id: 3, name: "Biography", color: "transparent" },
+  { id: 4, name: "Culture", color: "transparent" },
+  { id: 5, name: "Education", color: "transparent" },
+  { id: 6, name: "News", color: "transparent" },
+  { id: 7, name: "Philosophy", color: "transparent" },
+  { id: 8, name: "Psychology", color: "transparent" },
+  { id: 9, name: "Technology", color: "transparent" },
+  { id: 10, name: "Travel", color: "transparent" },
+];
+
 const Personalization = ({ props }) => {
   const [numberOfTopics, setNumberOfTopics] = useState(0);
+  const [topics, setTopics] = useState(initialTopics);
   const classes = useStyles();
-  const badges = [
-    "Art",
-    "Business",
-    "Biography",
-    "Comedy",
-    "Culture",
-    "Education",
-    "News",
-    "Philosophy",
-    "Technology",
-    "Travel",
-  ];
+  const badgeColors = {
+    clickedColor: "#4838D1",
+    notClickedColor: "transparent",
+  };
+
+  const handleBadgeClick = (id) => {
+    const updatedTopcs = topics.map((topic) => {
+      if (topic.id !== id) {
+        //No change in topic
+        return topic;
+      } else {
+        //Get current topic color
+        const topicCurrentColor = topic.color;
+        let updatedColor = "";
+
+        if (topicCurrentColor === badgeColors.clickedColor) {
+          updatedColor = badgeColors.notClickedColor;
+          setNumberOfTopics(numberOfTopics - 1);
+        } else {
+          updatedColor = badgeColors.clickedColor;
+          setNumberOfTopics(numberOfTopics + 1);
+        }
+
+        //Change topic color
+        return {
+          ...topic,
+          color: updatedColor,
+        };
+      }
+    });
+
+    setTopics(updatedTopcs);
+  };
 
   return (
     <div className={classes.pageContent}>
@@ -135,10 +171,15 @@ const Personalization = ({ props }) => {
         <Input placeholder="Placeholder" style={{ width: "100%" }} />
 
         <div className={classes.badges}>
-          {badges.map((badge) => {
+          {topics.map((topic) => {
             return (
-              <Badge key={badge} margin="2px">
-                {badge}
+              <Badge
+                key={topic.id}
+                style={{ backgroundColor: topic.color }}
+                margin="2px"
+                onClick={() => handleBadgeClick(topic.id)}
+              >
+                {topic.name}
               </Badge>
             );
           })}
