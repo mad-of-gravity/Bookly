@@ -1,9 +1,10 @@
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FinishPersonalizationScreen from "./components/Pages/FinishPersonalizationPage/FinishPersonalizationScreen";
 import OnBoarding from "./components/Pages/OnBoardingPage/OnBoarding";
 import Personalization from "./components/Pages/PersonalizationPage/Personalization";
 import Welcome from "./components/Pages/WelcomePage/Wecome";
 import Library from "./components/Pages/LibraryPage/Library";
+import "./App.css";
 
 const elements = [
   {
@@ -38,9 +39,14 @@ function App() {
           alt="header right ellipse"
         />
       </div>
-      <Personalization />
-      
-      
+      <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<OnBoarding pageElements={elements}/>} />
+        <Route path="/welcome" element={<Welcome/>} />
+        <Route path="/personalization" element={<Personalization/>} />
+        <Route path="/ready" element={<FinishPersonalizationScreen/>} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }

@@ -2,6 +2,7 @@ import { createUseStyles } from "react-jss";
 import { useState } from "react";
 import Dot from "../../DotComponent/Dot";
 import Button from "../../ButtonComponent/Button";
+import { useNavigate } from "react-router-dom";
 
 //The page styles used
 const useStyles = createUseStyles({
@@ -58,6 +59,7 @@ const useStyles = createUseStyles({
 });
 
 const OnBoarding = ({ pageElements }) => {
+  const navigate = useNavigate();
   //#2E2E5D will be the initial color of the dots except first one
   const [firstDotColor, setFirstDotColor] = useState("#4838D1");
   const [secondDotColor, setSecondDotColor] = useState("#2E2E5D");
@@ -109,10 +111,10 @@ const OnBoarding = ({ pageElements }) => {
     setImgSource(pageElements[2].imgSrc);
   };
 
-  // //When the skip button is clicked
-  // const handleSkipClick = () => {
-  //   setDotIndex(0);
-  // };
+  //When the skip button is clicked
+  const handleSkipClick = () => {
+    navigate("/welcome");
+  };
 
   //When the next button is clicked
   const handleNextClick = () => {
@@ -165,7 +167,7 @@ const OnBoarding = ({ pageElements }) => {
       <div className={classes.controls}>
         <Button
           variant="transparent"
-          onClick={handleNextClick}
+          onClick={handleSkipClick}
           style={{
             width: "140px",
             height: "56px",

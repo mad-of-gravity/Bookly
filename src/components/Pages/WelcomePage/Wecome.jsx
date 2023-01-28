@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
 import Badge from "../../BadgeComponent/Badge";
 import Button from "../../ButtonComponent/Button";
+import { useNavigate } from "react-router-dom";
 
 //The page styles used
 const useStyles = createUseStyles({
@@ -51,7 +52,17 @@ const useStyles = createUseStyles({
 });
 
 const Welcome = () => {
+  const navigate = useNavigate();
   const classes = useStyles();
+
+  const handlePersonalizeClick = () => {
+    navigate("/personalization");
+  }
+
+  const handleSkipClick = () => {
+    navigate("/ready");
+  };
+
   return (
     <div className={classes.pageContainer}>
       <h1 className={classes.heading1}>Welcome !</h1>
@@ -71,6 +82,8 @@ const Welcome = () => {
             fontSize: "16px",
             lineHeight: "24px",
           }}
+
+          onClick={handlePersonalizeClick}
         >
           Personalize Your Account
         </Button>
@@ -87,6 +100,8 @@ const Welcome = () => {
             lineHeight: "24px",
             border: "1px solid #FFFFFF",
           }}
+
+          onClick={handleSkipClick}
         >
           Skip
         </Button>

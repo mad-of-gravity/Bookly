@@ -3,6 +3,7 @@ import Input from "../../InputComponent/Input.jsx";
 import Badge from "../../BadgeComponent/Badge";
 import Button from "../../ButtonComponent/Button.jsx";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = createUseStyles({
   pageContent: {
@@ -121,6 +122,7 @@ const initialTopics = [
 ];
 
 const Personalization = ({ props }) => {
+  const navigate = useNavigate();
   const [numberOfTopics, setNumberOfTopics] = useState(0);
   const [topics, setTopics] = useState(initialTopics);
   const [selectedTopics, setSelectedTopics] = useState([]);
@@ -202,6 +204,10 @@ const Personalization = ({ props }) => {
   //handleSubmitClick handler goes here
 
   //handleSkipClick handler goes here
+  const handleSkipClick = () => {
+    localStorage.clear();
+    navigate("/ready");
+  }
 
   return (
     <div className={classes.pageContent}>
@@ -238,7 +244,7 @@ const Personalization = ({ props }) => {
 
       <div>
         <Button className={classes.submit}>Submit</Button>
-        <Button className={classes.skip}>Skip</Button>
+        <Button className={classes.skip} onClick={handleSkipClick}>Skip</Button>
       </div>
     </div>
   );
