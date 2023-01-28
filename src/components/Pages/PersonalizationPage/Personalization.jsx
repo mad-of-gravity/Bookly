@@ -140,10 +140,19 @@ const Personalization = ({ props }) => {
         let updatedColor = "";
 
         if (topicCurrentColor === badgeColors.clickedColor) {
+          //Change #4838D1 color to transparent
           updatedColor = badgeColors.notClickedColor;
+          
+          //Decreasing the number of topics
           setNumberOfTopics(numberOfTopics - 1);
+
+          //Remove from localStorage
+          localStorage.removeItem(topic.name);
         } else {
+          //Change transparent color to #4838D1
           updatedColor = badgeColors.clickedColor;
+
+          //Increasing the number of topics
           setNumberOfTopics(numberOfTopics + 1);
 
           //Add the selected topic to localStorage
@@ -158,6 +167,7 @@ const Personalization = ({ props }) => {
       }
     });
 
+    //Update the topic array
     setTopics(updatedTopcs);
   };
 
