@@ -2,8 +2,6 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
     input: {
-        width: "295px",
-        height: "53px",
         padding: "16px 24px",
         backgroundColor: "#1C1C4D",
         border: "none",
