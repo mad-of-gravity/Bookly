@@ -58,7 +58,7 @@ const FinishPersonalizationScreen = () => {
       <img className={classes.img} src="happy-people.png" alt="Illustration" />
       <h1 className={classes.heading1}>You are ready to go!</h1>
       <p className={classes.paragraph}>Congratulation, any interesting topics will be shortly in your hands.</p>
-      <Button className={classes.finish}>Submit</Button>
+      <Button className={classes.finish}>Finish</Button>
     </div>
   );
 };
