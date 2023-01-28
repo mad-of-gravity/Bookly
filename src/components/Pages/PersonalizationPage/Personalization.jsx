@@ -105,6 +105,7 @@ const useStyles = createUseStyles({
   },
 });
 
+//Audio book topics
 const initialTopics = [
   { id: 0, name: "Art", color: "transparent" },
   { id: 1, name: "Business", color: "transparent" },
@@ -144,6 +145,9 @@ const Personalization = ({ props }) => {
         } else {
           updatedColor = badgeColors.clickedColor;
           setNumberOfTopics(numberOfTopics + 1);
+
+          //Add the selected topic to localStorage
+          localStorage.setItem(topic.name, topic.name);
         }
 
         //Change topic color
