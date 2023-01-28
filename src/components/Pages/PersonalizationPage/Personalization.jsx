@@ -202,12 +202,16 @@ const Personalization = ({ props }) => {
   };
 
   //handleSubmitClick handler goes here
+  const handleSubmitClick = () => {
+    navigate("/ready");
+  };
+
 
   //handleSkipClick handler goes here
   const handleSkipClick = () => {
     localStorage.clear();
     navigate("/ready");
-  }
+  };
 
   return (
     <div className={classes.pageContent}>
@@ -243,7 +247,7 @@ const Personalization = ({ props }) => {
       </div>
 
       <div>
-        <Button className={classes.submit}>Submit</Button>
+        <Button className={classes.submit} onClick={handleSubmitClick}>Submit</Button>
         <Button className={classes.skip} onClick={handleSkipClick}>Skip</Button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import Button from "../../ButtonComponent/Button";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = createUseStyles({
   pageContainer: {
@@ -52,13 +53,18 @@ const useStyles = createUseStyles({
 
 const FinishPersonalizationScreen = () => {
     const classes = useStyles();
+    const navigate = useNavigate();
+
+    const handleFinishClick = () => {
+      navigate("/library");
+     }
     
   return (
     <div className={classes.pageContainer}>
       <img className={classes.img} src="happy-people.png" alt="Illustration" />
       <h1 className={classes.heading1}>You are ready to go!</h1>
       <p className={classes.paragraph}>Congratulation, any interesting topics will be shortly in your hands.</p>
-      <Button className={classes.finish}>Finish</Button>
+      <Button className={classes.finish} onClick={handleFinishClick}>Finish</Button>
     </div>
   );
 };

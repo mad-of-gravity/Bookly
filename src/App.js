@@ -5,6 +5,7 @@ import Personalization from "./components/Pages/PersonalizationPage/Personalizat
 import Welcome from "./components/Pages/WelcomePage/Wecome";
 import Library from "./components/Pages/LibraryPage/Library";
 import "./App.css";
+import PageHeader from "./components/PageHeaderComponent/PageHeader";
 
 const elements = [
   {
@@ -27,24 +28,14 @@ const elements = [
 function App() {
   return (
     <>
-      <div className="header">
-        <img
-          className="left-ellipse"
-          src="ellipse_16_stroke.png"
-          alt="header left ellipse"
-        />
-        <img
-          className="right-ellipse"
-          src="ellipse_17.png"
-          alt="header right ellipse"
-        />
-      </div>
       <BrowserRouter>
+        <PageHeader />
       <Routes>
         <Route exact path="/" element={<OnBoarding pageElements={elements}/>} />
         <Route path="/welcome" element={<Welcome/>} />
         <Route path="/personalization" element={<Personalization/>} />
         <Route path="/ready" element={<FinishPersonalizationScreen/>} />
+        <Route path="/library" element={<Library/>} />
       </Routes>
     </BrowserRouter>
     </>
