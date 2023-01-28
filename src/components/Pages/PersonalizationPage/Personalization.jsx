@@ -2,7 +2,7 @@ import { createUseStyles } from "react-jss";
 import Input from "../../InputComponent/Input.jsx";
 import Badge from "../../BadgeComponent/Badge";
 import Button from "../../ButtonComponent/Button.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useStyles = createUseStyles({
   pageContent: {
@@ -123,14 +123,45 @@ const initialTopics = [
 const Personalization = ({ props }) => {
   const [numberOfTopics, setNumberOfTopics] = useState(0);
   const [topics, setTopics] = useState(initialTopics);
+  const [selectedTopics, setSelectedTopics] = useState([]);
   const classes = useStyles();
   const badgeColors = {
     clickedColor: "#4838D1",
     notClickedColor: "transparent",
   };
 
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+  useEffect(() => {
+    console.log("Selected topics: " + selectedTopics);
+    console.log("Local storage: " + localStorage.getItem("topics"));
+  }, [selectedTopics]);
+
+
+  const removeSelectedTopic = (topic) => {
+    let updatedTopics = [...selectedTopics];
+    const topicName = topic.name;
+
+    const index = updatedTopics.indexOf(topicName);
+    updatedTopics = [
+      ...updatedTopics.slice(0, index),
+      ...updatedTopics.slice(index + 1),
+    ];
+    localStorage.setItem("topics", JSON.stringify([...updatedTopics]));
+    setSelectedTopics(updatedTopics);
+  };
+
+
+  const addSelectedTopic = (topic) => {
+    const updatedTopics = [...selectedTopics, topic.name];
+    localStorage.setItem("topics", JSON.stringify([...updatedTopics]));
+    setSelectedTopics(updatedTopics);
+  };
+
   const handleBadgeClick = (id) => {
-    const updatedTopcs = topics.map((topic) => {
+    const updatedTopics = topics.map((topic) => {
       if (topic.id !== id) {
         //No change in topic
         return topic;
@@ -139,24 +170,21 @@ const Personalization = ({ props }) => {
         const topicCurrentColor = topic.color;
         let updatedColor = "";
 
+        //If the current badge has already been pressed
         if (topicCurrentColor === badgeColors.clickedColor) {
           //Change #4838D1 color to transparent
           updatedColor = badgeColors.notClickedColor;
-          
+
           //Decreasing the number of topics
           setNumberOfTopics(numberOfTopics - 1);
-
-          //Remove from localStorage
-          localStorage.removeItem(topic.name);
+          removeSelectedTopic(topic);
         } else {
           //Change transparent color to #4838D1
           updatedColor = badgeColors.clickedColor;
 
           //Increasing the number of topics
           setNumberOfTopics(numberOfTopics + 1);
-
-          //Add the selected topic to localStorage
-          localStorage.setItem(topic.name, topic.name);
+          addSelectedTopic(topic);
         }
 
         //Change topic color
@@ -168,7 +196,7 @@ const Personalization = ({ props }) => {
     });
 
     //Update the topic array
-    setTopics(updatedTopcs);
+    setTopics(updatedTopics);
   };
 
   //handleSubmitClick handler goes here

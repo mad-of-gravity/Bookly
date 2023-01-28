@@ -3,6 +3,7 @@ import FinishPersonalizationScreen from "./components/Pages/FinishPersonalizatio
 import OnBoarding from "./components/Pages/OnBoardingPage/OnBoarding";
 import Personalization from "./components/Pages/PersonalizationPage/Personalization";
 import Welcome from "./components/Pages/WelcomePage/Wecome";
+import Library from "./components/Pages/LibraryPage/Library";
 
 const elements = [
   {
@@ -37,7 +38,7 @@ function App() {
           alt="header right ellipse"
         />
       </div>
-      <FinishPersonalizationScreen />
+      <Personalization />
       
       
     </>
