@@ -1,4 +1,5 @@
 import "./App.css";
+import FinishPersonalizationScreen from "./components/Pages/FinishPersonalizationPage/FinishPersonalizationScreen";
 import OnBoarding from "./components/Pages/OnBoardingPage/OnBoarding";
 import Personalization from "./components/Pages/PersonalizationPage/Personalization";
 import Welcome from "./components/Pages/WelcomePage/Wecome";
@@ -36,7 +37,7 @@ function App() {
           alt="header right ellipse"
         />
       </div>
-      <Personalization />
+      <FinishPersonalizationScreen />
       
       
     </>

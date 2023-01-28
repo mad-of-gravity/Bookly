@@ -34,11 +34,11 @@ const useStyles = createUseStyles({
   },
 
   topics: {
-    margin: "30px 0",
+    margin: "20px 0",
   },
 
   badges: {
-    margin: "15px 0",
+    margin: "12px 0",
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-start",
@@ -170,6 +170,10 @@ const Personalization = ({ props }) => {
     //Update the topic array
     setTopics(updatedTopcs);
   };
+
+  //handleSubmitClick handler goes here
+
+  //handleSkipClick handler goes here
 
   return (
     <div className={classes.pageContent}>
