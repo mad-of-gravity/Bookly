@@ -139,7 +139,18 @@ const Personalization = ({ props }) => {
     console.log("Local storage: " + localStorage.getItem("topics"));
   }, [selectedTopics]);
 
+  /*This function adds the selected topic 
+  to the selectedTopics and localStorage
+  */
+  const addSelectedTopic = (topic) => {
+    const updatedTopics = [...selectedTopics, topic.name];
+    localStorage.setItem("topics", JSON.stringify([...updatedTopics]));
+    setSelectedTopics(updatedTopics);
+  };
 
+  /*This function removes the already selected topic 
+  from selectedTopics and localStorage
+  */
   const removeSelectedTopic = (topic) => {
     let updatedTopics = [...selectedTopics];
     const topicName = topic.name;
@@ -149,13 +160,6 @@ const Personalization = ({ props }) => {
       ...updatedTopics.slice(0, index),
       ...updatedTopics.slice(index + 1),
     ];
-    localStorage.setItem("topics", JSON.stringify([...updatedTopics]));
-    setSelectedTopics(updatedTopics);
-  };
-
-
-  const addSelectedTopic = (topic) => {
-    const updatedTopics = [...selectedTopics, topic.name];
     localStorage.setItem("topics", JSON.stringify([...updatedTopics]));
     setSelectedTopics(updatedTopics);
   };
