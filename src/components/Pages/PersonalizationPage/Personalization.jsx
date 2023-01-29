@@ -136,11 +136,6 @@ const Personalization = ({ props }) => {
     localStorage.clear();
   }, []);
 
-  useEffect(() => {
-    console.log("Selected topics: " + selectedTopics);
-    console.log("Local storage: " + localStorage.getItem("topics"));
-  }, [selectedTopics]);
-
   /*This function adds the selected topic 
   to the selectedTopics and localStorage
   */
