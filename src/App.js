@@ -5,7 +5,7 @@ import Personalization from "./components/Pages/PersonalizationPage/Personalizat
 import Welcome from "./components/Pages/WelcomePage/Wecome";
 import Library from "./components/Pages/LibraryPage/Library";
 import "./App.css";
-import PageHeader from "./components/PageHeaderComponent/PageHeader";
+import PageHeader from "./components/PageHeaderComponent/PageHeader.jsx";
 
 const elements = [
   {
