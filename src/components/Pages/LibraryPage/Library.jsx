@@ -2,10 +2,16 @@ import { createUseStyles } from "react-jss";
 import { useState, useEffect } from "react";
 import Input from "../../InputComponent/Input.jsx";
 import Card from "../../CardComponent/Card.jsx";
+import "./Scrollbar.css";
 
 const useStyles = createUseStyles({
   pageContainer: {
-    width: "90%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    width: "100vw",
     height: "100vh",
   },
 
@@ -57,39 +63,42 @@ const useStyles = createUseStyles({
 
     main: {
       marginTop: "20px",
-      width: "100%",
+      width: "50%",
       height: "80vh",
+      justifyContent: "center",
     },
 
-    cardContainer: { 
-      height: "100%",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      overflow: "scroll",
-      overflowX: "hidden",
-      flexWrap: "wrap",
+    cardContainer: {
+      height: "80%",
+      width: "80%",
+      margin: " 20px auto 0 auto",
     },
   },
-  
+
   "@media (max-width: 375px)": {
     pageContainer: {
-      width: "87%",
-      marginTop: "40px",
+      width: "90%",
+      marginTop: "20px",
     },
 
     cardContainer: {
       height: "60vh",
     },
+
+    main: {
+      width: "90%",
+      height: "80vh",
+      marginTop: "20px",
+      justifyContent: "center",
+    },
   },
 });
 
 const Library = () => {
+  const [title, setTitle] = useState("");
+  const [books, setBooks] = useState([]);
+  const [topics, setTopics] = useState([]);
   const classes = useStyles();
-  const topics = [];
-
-  for (let key in localStorage) {
-    topics.push(localStorage.getItem(key));
-  }
 
   useEffect(() => {
     //Remove the page header from the library screen
@@ -98,13 +107,34 @@ const Library = () => {
       header.remove();
     }
 
-    const author = "J. K. Rowling";
-    const works = "Harry Potter and the Deathly Hallows";
+    const storedTopics = localStorage.getItem("topics");
+    setTopics(JSON.parse(storedTopics));
+    //http://openlibrary.org/subjects/love.json
 
-    fetch(`https://openlibrary.org/search.json?author=${author}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+
   }, []);
+
+  const handleInputChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  //searching by title
+  const handleOnEnterPress = (event) => {
+    const cleanup = true;
+
+    if (event.key === "Enter") {
+      fetch(`https://openlibrary.org/search.json?title=${title}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setBooks(data.docs);
+          console.log(books);
+        })
+        .catch((err) => {
+          setBooks([]);
+          alert(err.message);
+        });
+    }
+  };
 
   return (
     <div className={classes.pageContainer}>
@@ -115,41 +145,32 @@ const Library = () => {
       <div className={classes.main}>
         <h1 className={classes.heading1}>My Books</h1>
         <Input
-          placeholder="Search Books or Author..."
+          placeholder="Enter book title..."
           style={{ width: "100%", marginTop: "12px" }}
+          value={title}
+          onChange={handleInputChange}
+          onKeyPress={handleOnEnterPress}
         />
 
         <div className={classes.cardContainer}>
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="Barrack Obama"
-            bookTitle="A Promised Land"
-          />
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="J. K. Rowling"
-            bookTitle="Harry Potter and the Half-Blood Prince"
-          />
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="J. K. Rowling"
-            bookTitle="Harry Potter and the Philosopher's Stone"
-          />
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="J. K. Rowling"
-            bookTitle="Harry Potter and the Philosopher's Stone"
-          />
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="J. K. Rowling"
-            bookTitle="Harry Potter and the Philosopher's Stone"
-          />
-          <Card
-            imgUrl="https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010__340.jpg"
-            author="J. K. Rowling"
-            bookTitle="Harry Potter and the Philosopher's Stone"
-          />
+          {books.map((book) => {
+            return (
+              <Card
+                key={book.key}
+                imgUrl={
+                  book.cover_i
+                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+                    : "no-cover.png"
+                }
+                bookTitle={book.title}
+                author={
+                  book.author_name[0] 
+                    ? book.author_name[0] 
+                    : "Unknown Author"
+                }
+              />
+            );
+          })}
         </div>
       </div>
     </div>

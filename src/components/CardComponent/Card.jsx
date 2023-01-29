@@ -7,12 +7,13 @@ const useStyles = createUseStyles({
     height: "20%",
     padding: "10px",
     marginBottom: "60px",
+    cursor: "pointer",
   },
 
   "@media (min-width: 376px)": {
     layout: {
-      width: "50%",
-    }
+      width: "100%",
+    } 
   },
 
   "@media (max-width: 375px)": {
